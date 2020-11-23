@@ -1,0 +1,526 @@
+backend:
+    name: github
+    repo: boy12371/redux
+    branch: master
+    api_root: https://api.github.com
+    base_url: https://api.netlify.com
+    auth_endpoint: auth
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+    - label: 分类
+      name: tags
+      folder: src/pages/tags/
+      create: true
+      slug: "{{fields.title}}-{{fields.lang}}"
+      fields:
+          - label: 模板键
+            name: templateKey
+            widget: hidden
+            default: TagsPost
+          - label: 名称
+            name: title
+            widget: string
+            default: 分类名称
+          - label: 语言
+            name: lang
+            widget: relation
+            collection: lang
+            searchFields: [title, key]
+            valueField: key
+            multiple: false
+            displayFields: [title, key]
+            default: zh
+          - label: 分类描述
+            name: description
+            widget: text
+            default: 分类描述
+
+    - label: 文章
+      name: article
+      folder: src/pages/article/
+      create: true
+      slug: "{{year}}{{month}}{{day}}-{{hour}}{{minute}}{{second}}-{{fields.title}}-{{fields.lang}}"
+      fields:
+          - label: 模板键
+            name: templateKey
+            widget: hidden
+            default: ArticlePost
+          - label: 标题
+            name: title
+            widget: string
+            default: 文章标题
+          - label: 语言
+            name: lang
+            widget: relation
+            collection: lang
+            searchFields: [title, key]
+            valueField: key
+            multiple: false
+            displayFields: [title, key]
+            default: zh
+          - label: 描述
+            name: description
+            widget: text
+            default: 文章描述
+          - label: 时间
+            name: date
+            widget: datetime
+            format: "YYYY-MM-DD HH:mm:ss Z"
+          - label: 标签
+            name: tags
+            widget: relation
+            collection: tags
+            searchFields: [title]
+            valueField: title
+            multiple: true
+            displayFields: [title]
+            default: 标签
+          - label: 内容
+            name: body
+            widget: markdown
+            default: 文章内容
+
+    - label: 语言
+      name: lang
+      folder: src/pages/lang/
+      create: true
+      slug: "{{fields.title}}-{{fields.key}}"
+      fields:
+          - label: 模板键
+            name: templateKey
+            widget: hidden
+            default: LangPost
+          - label: 标题
+            name: title
+            widget: string
+            default: 中文
+          - label: 键
+            name: key
+            widget: string
+            default: zh
+          - label: 选项
+            name: locales
+            widget: list
+            default:
+                - key: loading
+                  value: Loading
+            fields:
+                - label: 键
+                  name: key
+                  widget: string
+                  default: loading
+                - label: 值
+                  name: value
+                  widget: string
+                  default: 加载中
+
+    - label: 组件
+      name: share
+      folder: src/pages/share/
+      create: true
+      slug: "{{fields.key}}-{{fields.lang}}"
+      fields:
+          - label: 模板键
+            name: templateKey
+            widget: hidden
+            default: SharePost
+          - label: 标题
+            name: title
+            widget: string
+            default: 头部栏
+          - label: 组件名称
+            name: name
+            widget: relation
+            collection: shareSettings
+            searchFields: [name, key]
+            valueField: name
+            displayFields: [name, key]
+            default: 头部组件
+          - label: 键
+            name: key
+            widget: relation
+            collection: shareSettings
+            searchFields: [name, key]
+            valueField: key
+            displayFields: [name, key]
+            default: header
+          - label: 语言
+            name: lang
+            widget: relation
+            collection: lang
+            searchFields: [title, key]
+            valueField: key
+            multiple: false
+            displayFields: [title, key]
+            default: zh
+          - label: 选项
+            name: options
+            widget: list
+            default:
+                - key: title
+                  value: 匡架网络
+            fields:
+                - label: 键
+                  name: key
+                  widget: string
+                  default: title
+                - label: 值
+                  name: value
+                  widget: text
+                  default: 匡架网络
+
+    - label: 单页
+      name: single
+      folder: src/pages/single/
+      create: true
+      slug: "{{fields.key}}-{{fields.lang}}"
+      fields:
+          - label: 模板键
+            name: templateKey
+            widget: hidden
+            default: SinglePost
+          - label: 标题
+            name: title
+            widget: string
+            default: 首页
+          - label: 单页名称
+            name: name
+            widget: relation
+            collection: singleSettings
+            searchFields: [name, key]
+            valueField: name
+            displayFields: [name, key]
+            default: 单页名称
+          - label: 键
+            name: key
+            widget: relation
+            collection: singleSettings
+            searchFields: [name, key]
+            valueField: key
+            displayFields: [name, key]
+            default: index
+          - label: 语言
+            name: lang
+            widget: relation
+            collection: lang
+            searchFields: [title, key]
+            valueField: key
+            multiple: false
+            displayFields: [title, key]
+            default: zh
+          - label: 描述
+            name: description
+            widget: text
+            default: 首页描述
+          - label: 内容
+            name: body
+            widget: markdown
+            default: 内容
+
+    - label: 主题
+      name: theme
+      folder: src/pages/theme/
+      create: true
+      slug: "{{fields.title}}-{{fields.key}}"
+      fields:
+          - label: 模板键
+            name: templateKey
+            widget: hidden
+            default: ThemePost
+          - label: 名称
+            name: title
+            widget: string
+            default: 亮色主题
+          - label: 键
+            name: key
+            widget: string
+            default: light
+          - label: 全局主色
+            name: primary
+            widget: select
+            options:
+                - label: 蓝色
+                  value: rgba(24,144,255,1)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(24,144,255,1)
+          - label: 链接色
+            name: link
+            widget: select
+            options:
+                - label: 蓝色
+                  value: rgba(24,144,255,1)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(24,144,255,1)
+          - label: 成功色
+            name: success
+            widget: select
+            options:
+                - label: 绿色
+                  value: rgba(82,196,26,1)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(82,196,26,1)
+          - label: 警告色
+            name: warning
+            widget: select
+            options:
+                - label: 土色
+                  value: rgba(250,173,20,1)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(250,173,20,1)
+          - label: 错误色
+            name: error
+            widget: select
+            options:
+                - label: 红色
+                  value: rgba(245,34,45,1)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(245,34,45,1)
+          - label: 标题色
+            name: heading
+            widget: select
+            options:
+                - label: 黑色
+                  value: rgba(0, 0, 0, .85)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(0, 0, 0, .85)
+          - label: 主文本色
+            name: text
+            widget: select
+            options:
+                - label: 蓝色
+                  value: rgba(0, 0, 0, .65)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(0, 0, 0, .65)
+          - label: 次文本色
+            name: textSecondary
+            widget: select
+            options:
+                - label: 蓝色
+                  value: rgba(0, 0, 0, .45)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(0, 0, 0, .45)
+          - label: 失效色
+            name: disabled
+            widget: select
+            options:
+                - label: 蓝色
+                  value: rgba(0, 0, 0, .25)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(0, 0, 0, .25)
+          - label: 边框色
+            name: border
+            widget: select
+            options:
+                - label: 蓝色
+                  value: rgba(217,217,217,1)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(217,217,217,1)
+          - label: 阴影色
+            name: shadow
+            widget: select
+            options:
+                - label: 蓝色
+                  value: rgba(0, 0, 0, .15)
+                - label: 红色
+                  value: rgba(255,24,24,1)
+            default: rgba(0, 0, 0, .15)
+
+    - label: 组件设置
+      name: shareSettings
+      folder: src/pages/settings/share/
+      create: true
+      slug: "{{fields.key}}"
+      fields:
+          - label: 模板键
+            name: templateKey
+            widget: hidden
+            default: ShareSettingsPost
+          - label: 标题
+            name: title
+            widget: string
+            default: 组件标题
+          - label: 名称
+            name: name
+            widget: select
+            options:
+                - 头部组件
+                - 跑马灯组件
+                - 面包屑组件
+                - 轮播图组件
+                - 推荐组件
+                - 侧边组件
+                - 邮件组件
+                - 短信组件
+                - 聊天组件
+                - 标签组件
+                - 上传组件
+                - 底部组件
+                - 关闭网站组件
+            default: 组件名称
+          - label: 键
+            name: key
+            widget: select
+            options:
+                - header
+                - marquee
+                - crumb
+                - carousel
+                - feature
+                - sider
+                - email
+                - mobile
+                - message
+                - tags
+                - upload
+                - footer
+                - closed
+            default: header
+          - label: 选项
+            name: options
+            widget: list
+            default:
+                - key: logo
+                  value: true
+            fields:
+                - label: 键
+                  name: key
+                  widget: string
+                  default: logo
+                - label: 值
+                  name: value
+                  widget: text
+                  default: "true"
+
+    - label: 单页设置
+      name: singleSettings
+      folder: src/pages/settings/single/
+      create: true
+      slug: "{{fields.key}}"
+      fields:
+          - label: 模板键
+            name: templateKey
+            widget: hidden
+            default: SingleSettingsPost
+          - label: 标题
+            name: title
+            widget: string
+            default: 单页标题
+          - label: 名称
+            name: name
+            widget: select
+            options:
+                - 首页页面
+                - 404页面
+                - 分类页面
+                - 招聘页面
+                - 介绍页面
+                - 联系页面
+            default: 单页名称
+          - label: 键
+            name: key
+            widget: select
+            options:
+                - index
+                - notfound
+                - tags
+                - jobs
+                - about
+                - contact
+            default: index
+          - label: 选项
+            name: options
+            widget: list
+            default:
+                - key: header
+                  value: true
+            fields:
+                - label: 组件名称
+                  name: key
+                  widget: relation
+                  collection: shareSettings
+                  searchFields: [name, key]
+                  valueField: key
+                  displayFields: [name, key]
+                  default: header
+                - label: 是否显示
+                  name: value
+                  widget: select
+                  options:
+                      - label: 显示
+                        value: true
+                      - label: 不显示
+                        value: false
+                  default: true
+
+    - label: 网站设置
+      name: settings
+      files:
+          - label: 系统设置
+            name: systemSettings
+            file: src/pages/settings/system.md
+            fields:
+                - label: 模板键
+                  name: templateKey
+                  widget: hidden
+                  default: SystemSettings
+                - label: 标题
+                  name: title
+                  widget: string
+                  default: 网站标题
+                - label: 是否关闭网站
+                  name: isClosed
+                  widget: boolean
+                  default: false
+                - label: 描述
+                  name: description
+                  widget: text
+                  default: 网站描述
+                - label: 关键字
+                  name: keywords
+                  widget: text
+                  default: 网站关键字
+          - label: 主题设置
+            name: themeSettings
+            file: src/pages/settings/theme.md
+            fields:
+                - label: 模板键
+                  name: templateKey
+                  widget: hidden
+                  default: ThemeSettings
+                - label: 默认主题
+                  name: defaultTheme
+                  widget: relation
+                  collection: theme
+                  searchFields: [title, key]
+                  valueField: key
+                  displayFields: [title, key]
+                  default: light
+          - label: 语言设置
+            name: langSettings
+            file: src/pages/settings/lang.md
+            fields:
+                - label: 模板键
+                  name: templateKey
+                  widget: hidden
+                  default: LangSettings
+                - label: 默认语言
+                  name: defaultLang
+                  widget: relation
+                  collection: lang
+                  searchFields: [title, key]
+                  valueField: key
+                  displayFields: [title, key]
+                  default: zh
