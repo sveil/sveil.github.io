@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "https://sveil.github.io/assets/js/main.354a0dc6.js",
+    "main.js": "https://sveil.github.io/assets/js/main.b7ae4183.js",
     "sveilSingle.js": "https://sveil.github.io/remoteEntry.js",
-    "assets/js/790.fb7b36de.chunk.js": "https://sveil.github.io/assets/js/790.fb7b36de.chunk.js",
+    "assets/js/790.b9f5efbe.chunk.js": "https://sveil.github.io/assets/js/790.b9f5efbe.chunk.js",
     "assets/js/887.86b56821.chunk.js": "https://sveil.github.io/assets/js/887.86b56821.chunk.js",
     "assets/js/119.3b6398d1.chunk.js": "https://sveil.github.io/assets/js/119.3b6398d1.chunk.js",
     "vendors.js": "https://sveil.github.io/assets/js/vendors.c80a96e5.chunk.js",
@@ -47,6 +47,6 @@
     "assets/robots.txt": "https://sveil.github.io/robots.txt"
   },
   "entrypoints": [
-    "assets/js/main.354a0dc6.js"
+    "assets/js/main.b7ae4183.js"
   ]
 }
