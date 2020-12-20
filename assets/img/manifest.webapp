@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "name": "Single",
+  "description": "Single - single page website for app",
+  "icons": {
+    "60": "http://127.0.0.1:3001/assets/img/firefox_app_60x60.png",
+    "128": "http://127.0.0.1:3001/assets/img/firefox_app_128x128.png",
+    "512": "http://127.0.0.1:3001/assets/img/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": "Sveil Solutions",
+    "url": "https://sveil.com"
+  }
+}
