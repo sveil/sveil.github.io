@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "https://sveil.github.io/assets/js/main.b7ae4183.js",
+    "main.js": "https://sveil.github.io/assets/js/main.cc82b028.js",
     "sveilSingle.js": "https://sveil.github.io/remoteEntry.js",
-    "assets/js/790.b9f5efbe.chunk.js": "https://sveil.github.io/assets/js/790.b9f5efbe.chunk.js",
-    "assets/js/887.86b56821.chunk.js": "https://sveil.github.io/assets/js/887.86b56821.chunk.js",
-    "assets/js/119.3b6398d1.chunk.js": "https://sveil.github.io/assets/js/119.3b6398d1.chunk.js",
-    "vendors.js": "https://sveil.github.io/assets/js/vendors.c80a96e5.chunk.js",
-    "styles.css": "https://sveil.github.io/assets/css/532.02dfe8d4.css",
+    "assets/js/790.cd23b781.chunk.js": "https://sveil.github.io/assets/js/790.cd23b781.chunk.js",
+    "assets/js/887.bf92021c.chunk.js": "https://sveil.github.io/assets/js/887.bf92021c.chunk.js",
+    "assets/js/430.4ad54047.chunk.js": "https://sveil.github.io/assets/js/430.4ad54047.chunk.js",
+    "vendors.js": "https://sveil.github.io/assets/js/vendors.e14927eb.chunk.js",
+    "styles.css": "https://sveil.github.io/assets/css/532.4fcd70c4.css",
     "styles.js": "https://sveil.github.io/assets/js/styles.49d9c4ea.chunk.js",
     "index.css": "https://sveil.github.io/assets/css/826.31d6cfe0.css",
     "index.js": "https://sveil.github.io/assets/js/index.d9640173.chunk.js",
@@ -47,6 +47,6 @@
     "assets/robots.txt": "https://sveil.github.io/robots.txt"
   },
   "entrypoints": [
-    "assets/js/main.b7ae4183.js"
+    "assets/js/main.cc82b028.js"
   ]
 }
